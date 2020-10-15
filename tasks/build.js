@@ -214,7 +214,7 @@ const scripts = [
 	},
 	{
 		src: 'js/renderers/SVGRenderer.js',
-		builds: defaultBuilds
+		builds: ['full','svg_light','svg','html', 'html_light']
 	},
 	{
 		src: 'js/renderers/CanvasRenderer.js',

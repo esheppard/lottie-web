@@ -6438,7 +6438,9 @@ CanvasRenderer.prototype.createSolid = function (data) {
     return new CVSolidElement(data, this.globalData, this);
 };
 
-CanvasRenderer.prototype.createNull = SVGRenderer.prototype.createNull;
+CanvasRenderer.prototype.createNull = function (data) {
+  return new NullElement(data,this.globalData,this);
+};
 
 CanvasRenderer.prototype.ctxTransform = function(props){
     if(props[0] === 1 && props[1] === 0 && props[4] === 0 && props[5] === 1 && props[12] === 0 && props[13] === 0){
@@ -6637,7 +6639,7 @@ CanvasRenderer.prototype.updateContainerSize = function () {
 };
 
 CanvasRenderer.prototype.destroy = function () {
-    if(this.renderConfig.clearCanvas) {
+    if(this.renderConfig.clearCanvas && this.animationItem.wrapper) {
         this.animationItem.wrapper.innerText = '';
     }
     var i, len = this.layers ? this.layers.length : 0;
